@@ -165,7 +165,7 @@ int main() {
 
     // load models
     // -----------
-    Model ourModel("resources/objects/backpack/backpack.obj");
+    Model ourModel("resources/objects/backpack/SIMPLE-ROUND-TABLE.obj");
     ourModel.SetShaderTextureNamePrefix("material.");
 
     PointLight& pointLight = programState->pointLight;
@@ -188,6 +188,12 @@ int main() {
     while (!glfwWindowShouldClose(window)) {
         // per-frame time logic
         // --------------------
+
+        // Postavljamo boju pozadine
+
+        glClearColor(0.3, 0.4, 0.5, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+
         float currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
@@ -256,6 +262,12 @@ int main() {
 void processInput(GLFWwindow *window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
+
+    // Pritiskom na dugme G poazdina ce biti zelena
+    if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS) {
+        glClearColor(0.0, 0.7, 0.0, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         programState->camera.ProcessKeyboard(FORWARD, deltaTime);

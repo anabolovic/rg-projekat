@@ -165,7 +165,7 @@ int main() {
 
     // load models
     // -----------
-    Model ourModel("resources/objects/cat/source/cat/catn0.obj");
+    Model ourModel("resources/objects/cat/catn0.obj");
     ourModel.SetShaderTextureNamePrefix("material.");
 
     PointLight& pointLight = programState->pointLight;
